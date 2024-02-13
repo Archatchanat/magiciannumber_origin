@@ -1,0 +1,415 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+padding: 0px;;
+margin: 0; 
+
+}
+body{
+font-family:"Courier New", Courier, monospace;
+font-size: 14px;
+color:#000;
+background-color:#f1f1f1;
+}
+.clear {line-height: 0px; font-size: 1px; height: 0px; clear: both; margin: 0; padding: 0; }
+.spacer{line-height:0; font-size:0; clear:both;	}
+.gap{line-height: 10px; font-size: 1px; height: 10px; clear: both; margin: 0; padding: 0;}
+.dotted2px{border-bottom:2px #000 dotted;}
+.dotted1px{border-bottom:1px #000 dotted;}
+
+a:link {
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #000000;
+}
+a:visited {
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #000000;
+}
+a:hover {
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #0000FF;
+}
+
+p{
+	font-family:"Courier New", Courier, monospace;
+	font-size:14px;
+	color:#000;
+}
+td{
+	font-family:"Courier New", Courier, monospace;
+	font-size:14px;
+	color:#000;
+}
+.text{
+	font-family:"Courier New", Courier, monospace;
+	font-size:14px;
+	color:#000;
+}
+
+div.main{
+	width:100%; height:100px;
+}
+#bgheader{
+	border-bottom:1px solid #FFF;
+	width:100%; height:31px;
+	float:left;
+	font-size:12px; font-weight:bold;
+	background-image:url(../images/bghead.png); background-repeat:repeat-x;
+}
+#bgheader #logo{
+	width:200px;
+	height:30px;
+	margin-left:7px;
+	float:left;
+}	
+#bgheader #dateTime{
+	width:500px;
+	float:left;
+}	
+
+#bgheader2{
+	border-bottom:1px solid #c3c3c3;
+	width:100%; height:48px;
+	background-image:url(../images/bghead2.png); background-repeat:repeat-x;
+}
+div.Content{
+width:100%;
+margin-left:5px;
+margin-top:10px;
+}
+div.ContentRight{
+border:0px solid #CCC;
+width:15%;
+height:540px;
+float:left;
+}
+div.ContentLeft{
+border:0px solid #CCC;
+margin-left:5px;
+width:80%;
+height:100%;
+float:left;
+}
+
+#profile{
+	width:100%;
+	background-color:#FFF;
+	border:1px solid #b3cdd4;
+	margin-bottom:3px;
+	height:auto;
+}
+
+#profile2{
+	width:100%;
+	background-color:#FFF;
+	border:1px solid #b3cdd4;
+	margin-bottom:3px;
+	height:578px;
+}
+#profile .head{
+	height:28px;
+	padding-left:8px; color: #363399;
+	background:url(../images/menu.png);
+	background-repeat:repeat-x; font-size: 12px;
+	text-transform:capitalize; font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+#profile .panel{
+	background-color:#FFF;
+	height:540px;
+	padding:5px;
+}
+#profile .panel .box1{
+	float:left;
+	margin-bottom:5px;
+}
+#profile .panel .box2{
+	text-align:center;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#profile .panel .box1 .txt{
+	color:#000;
+	font-size:12px;
+	font-weight:bolder;
+}
+#profile .panel .box1 .txt2{
+	color:#003399;
+	font-size:12px;
+}
+
+#iframeDiv{
+	width:99%;
+	float:left;
+	background-color:#FFF;
+	border:1px solid #b3cdd4;
+	margin-bottom:3px;
+}
+#iframeDiv .panel{
+	background-color:#FFF;
+	padding:5px;
+}
+
+#iframeDiv .panel .register{
+	width:700px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+}
+#iframeDiv .panel .search{
+	width:950px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	text-align:center;
+}
+#iframeDiv .panel .register h2{
+	text-align:center;
+}
+
+#iframeDiv .panel .formDiv{
+	width:700px;
+	margin-top:10px;
+	margin-left:100px;
+	text-align:center;
+}
+#iframeDiv .panel .formDiv p{
+	font:"Angsana New";
+	font-size:14px;
+}
+
+#iframeDiv .panel .formDiv2{
+	width:740px;
+	margin-top:10px;
+	margin-left:20px;
+	text-align:center;
+}
+#iframeDiv .panel .formDiv2 p{
+	font:"Angsana New";
+	font-size:14px;
+}
+
+#iframeDiv .report{
+	width:800px;
+	background-color:#FFF;
+	padding:10px;
+}
+#iframeDiv .report .head{
+	width:750px;
+	text-align:center;
+	font:"Angsana New";
+	font-size:18px;
+}
+#iframeDiv .report .formDiv{
+	width:750px;
+	text-align:center;
+}
+#iframeDiv .report .formDiv p{
+	font:"Angsana New";
+	font-size:14px;
+}
+
+.boxTxt{
+	width:340px;
+	float:left;
+	margin-top:10px;
+}
+.boxTxt p{
+	float:right;
+	margin-right:30px; 
+	font-size:14px;
+}
+.boxElement{
+	width:350px;
+	float:left;
+	margin-left:10px;
+	margin-top:10px;
+}
+
+
+
+div.menu{
+	width:100%;
+}
+
+div.menu ul.menu_left{
+ list-style: none; color: #3333FF; padding:0; margin: 0; width: 100%;
+}
+div.menu ul.menu_left li{
+height:28px;
+list-style: none; padding:0; margin: 0px 0px 3px 0px; border:1px solid #b3cdd4; display: block;
+
+}
+div.menu ul.menu_left li a{
+display: block; padding-left:8px; color: #363399; background:url(../images/menu.png); background-repeat:repeat-x; font-size: 12px; text-transform:capitalize; font-weight: bold; cursor: pointer; text-decoration: none;
+}
+div.menu ul.menu_left li a:hover{
+text-decoration: none;
+}
+div.menu ul.menu_left li.one a span{
+ list-style: none; display: block; height: 24px; padding-top: 6px; padding-left:20px; position: relative;
+}
+div.menu ul.menu_left li.one a:hover span{
+background: url(../images/menu_r_bg_hover_one.gif) no-repeat top right;
+}
+div.menu ul.menu_left li a span{
+ list-style: none; display: block; height: 24px; padding-top: 6px; padding-left:20px; position: relative;
+}
+div.menu ul.menu_left li a:hover span{
+
+}
+div.menu ul.menu_left li span img{
+position: absolute; top: 4px; left: 0px; border: none;
+}
+div.menu ul.menu_left li ul{
+padding: 0px; margin:0px; background-color: #fff; border:0px solid #ccc;
+}
+div.menu ul.menu_left li ul li{
+ list-style: none; padding:0; margin: 0; display: block; color: #363399; font-size: 12px; border-bottom:1px dashed #ccc; border-top:0px dashed #ccc; border-left:0px dashed #ccc; border-right:0px dashed #ccc; 
+}
+div.menu ul.menu_left li ul li a{
+display: block; background: none; color: #363399; font-size: 12px; font-weight: normal; cursor: pointer; text-transform: none; padding: 4px 8px; _position: relative;
+}
+div.menu ul.menu_left li ul li a:hover{
+display: block; background: #f5f7f7; color: #363399; font-size: 12px; cursor: pointer; text-transform: none; padding: 4px 8px;
+}
+div.menu ul.menu_left li ul li a.active{
+display: block; background: #f5f7f7; color: red; font-size: 12px; cursor: pointer; text-transform: none; padding: 4px 8px;
+}
+
+table.admin_table{
+ width:100%;
+ border-top: none;
+ border: 1px solid #dfdfdf;
+}
+table.admin_table caption{
+text-align: left;
+padding: 2px 6px;
+}
+table.admin_table caption a{
+color: #202550;
+}
+table.admin_table caption a:visited{
+color: #202550;
+}
+table.admin_table caption a:hover{
+color: #66B3FF;
+text-decoration: underline
+}
+table.admin_table  thead tr{
+text-align: left;
+color:#000;
+padding: 3px 6px;
+border: 0px solid #fff;
+background-image:url(../images/bg_headtatle.png); background-repeat:repeat-x;
+height:30px;
+padding: 2px 6px;
+font-size:8px; font-weight:bold;
+}
+table.admin_table  tfoot tr{
+background-color: #E4EBF1;
+}
+table.admin_table tbody tr{
+
+}
+table.admin_table tbody tr.highlight{
+background-color: #def0fb
+}
+table.admin_table caption a{
+color: #FF3366
+}
+table.admin_table tbody td{ 
+text-align: left;
+height:22px;
+}
+table.admin_table tr td{
+ padding: 2px 6px;
+}
+table.admin_table tr td.label{
+width: 13%;
+text-align: right;
+}
+
+.textinput{
+border:1px solid #dfdfdf;
+color:#003399;
+}
+.textinput_color{
+border:1px solid #dfdfdf; color:#00F;
+}
+.bt{
+height:20px; border:1px solid #d9dedf;
+background-image:url(../images/bt.png); background-repeat:repeat-x;
+cursor:pointer;
+}
+
+
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+
+.thumbnail{
+	position: relative;
+	z-index: 0;
+}
+
+.thumbnail:hover{
+	background-color: transparent;
+	z-index: 50;
+}
+
+.thumbnail span{ /*CSS for enlarged image*/
+	position: absolute;
+	background-color: lightyellow;
+	padding: 5px;
+	left: -1000px;
+	border: 1px dashed gray;
+	visibility: hidden;
+	color: black;
+	text-decoration: none;
+	width:auto;
+}
+
+.thumbnail span img{ /*CSS for enlarged image*/
+	border-width: 0;
+	padding: 2px;
+}
+
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+	visibility: visible;
+	top: 15;
+	left: 20px; /*position where enlarged image should offset horizontally */
+}
+
+.textform{ font-size:12px; font-weight:bold;}
+.textdata{ font-size:12px; font-weight:bold; color:#009;}
+
+table.TBPrice{ 
+	width:100%; border-right:1px solid #000;
+}
+table.TBPrice thead tr td{ 
+	height:25px; font-size:14px; font-weight:bold; color:#000; padding-top:5px; border-left:1px solid #000; border-top:1px solid #000; border-bottom:1px solid #000;
+}
+table.TBPrice tbody tr td{ 
+	height:20px; font-size:14px; color:#000; padding-top:2px; border-left:1px solid #000; border-bottom:1px solid #000;
+}
+table.TBPrice tbody tr td input.txtyear{ 
+	border:1px solid #CCC; width:40px; height:20px; font-size:14px; font-weight:bold; color:#039;
+}
+table.TBPrice tfoot tr td{ 
+	height:20px; font-size:14px; font-weight:bold; color:#000; padding-top:3px; border-left:1px solid #000; border-bottom:1px solid #000;
+}
+.textinput{ 
+	border:1px solid #CCC; height:20px; font-size:14px; font-weight:bold; color:#039;
+}
+.textinputdotted{ 
+	  border:0px; border-bottom:1px dotted #CCC; height:20px; font-size:14px; font-weight:bold; color:#039; padding-bottom:1px;
+}
+.textFrom{ font-size:14px; font-weight:bold; color:#000;}
