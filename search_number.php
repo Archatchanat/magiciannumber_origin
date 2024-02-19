@@ -128,7 +128,7 @@
 			
 			
 			
-			<?
+			<?php
 				//--------------------------------------------------------------------------------------------------
 				// check null
 				
@@ -203,22 +203,26 @@
 				
 					
 				//--------------------------------------------------------------------------------------------------
-				$telway = " select * 
-	           				from  product
-	           				where  $con3 and
-								   $con4 and
-								   $con5 and
-								   $con6 and
-								   $con7 and 
-								   $con8 and  
-								   $con9 and  
-								   $con10 and
-								   $p_network and
-								   $p_price and
-								   $part_number and p_show = 'yes' and p_check= 'yes'";
+				include 'connect/connect.php';
+				if (!$conn) {
+					die("Connection failed: " . mysqli_connect_error());
+				}
+				$telway = " SELECT * 
+	           				FROM  product
+	           				WHERE  $con3 AND
+								   $con4 AND
+								   $con5 AND
+								   $con6 AND
+								   $con7 AND 
+								   $con8 AND  
+								   $con9 AND  
+								   $con10 AND
+								   $p_network AND
+								   $p_price AND
+								   $part_number AND p_show = 'yes' AND p_check= 'yes'";
 								  
-				$objQuery = mysql_query($telway) or die ("Error Query [".$telway."]");
-				$Num_Rows = mysql_num_rows($objQuery);
+				$objQuery = mysqli_query($conn, $telway) or die ("Error Query [".$telway."]");
+				$Num_Rows = mysqli_num_rows($objQuery);
 		
 				$Per_Page = 1000;   // Per Page
 
@@ -259,7 +263,7 @@
 			
 			
 				$telway .=" ORDER  BY ".$_GET['stack']." ".$_GET['type_stack']." LIMIT $Page_Start , $Per_Page";
-				$objQuery  = mysql_query($telway);
+				$objQuery  = mysqli_query($conn,$telway);
 			?>
 			
 			<tr align="center">

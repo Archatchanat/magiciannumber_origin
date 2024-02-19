@@ -63,15 +63,15 @@
 			
 			
 			<?
-				$telway ="select  product.* , product_category.*
-				           from   product   , product_category 
-						   where  product.cat_id = product_category.cat_id and
+				$telway ="SELECT  product.* , product_category.*
+				           FROM   product   , product_category 
+						   WHERE  product.cat_id = product_category.cat_id and
 						   		  product.p_show = 'yes' and 
 								  product.p_check = 'yes'
 								  ";
 								  
-				$objQuery = mysql_query($telway) or die ("Error Query [".$telway."]");
-				$Num_Rows = mysql_num_rows($objQuery);
+				$objQuery = mysqli_query($telway) or die ("Error Query [".$telway."]");
+				$Num_Rows = mysqli_num_rows($objQuery);
 		
 				$Per_Page = 2000;   // Per Page
 
@@ -100,7 +100,7 @@
 					$Num_Pages = (int)$Num_Pages;
 				}
 			
-				if($_GET['type_stack']=="")
+				if(isset($_GET['type_stack'])=="")
 				{ 
 					$_GET['type_stack'] = "ASC"; 
 				}
@@ -112,7 +112,7 @@
 			
 			
 				$telway .=" ORDER  BY ".$_GET['stack']." ".$_GET['type_stack']." LIMIT $Page_Start , $Per_Page";
-				$objQuery  = mysql_query($telway);
+				$objQuery  = mysqli_query($telway);
 			?>
 			
 			<tr align="center">
@@ -172,7 +172,7 @@
 			</tr>
 			
 			<?
-				while($rs_p = mysql_fetch_array($objQuery))
+				while($rs_p = mysqli_fetch_assoc($objQuery))
 				{
 				
 			?>
@@ -198,14 +198,38 @@
 						</td>
 						<td><?php
 							/* เพิ่ม icon ค่ายมือถือ AIS DTAC TRUE */ 
-							if($rs_p['p_network']=='AIS') { $icon="ais.jpg"; } 
-						elseif($rs_p['p_network']=='DTAC') { $icon="dtac.jpg"; }
-						elseif($rs_p['p_network']=='TRUE') { $icon="true.jpg"; }
-						else { $icon=="n/a"; }
-						echo "<img src=\"$icon\">";
+							if(isset($rs_p) && is_array($rs_p) && isset($rs_p['p_network'])){
+								if($rs_p['p_network'] == 'AIS'){
+									$icon = "ais.jpg";
+								}elseif ($rs_p['p_network'] == 'DTAC'){
+									$icon = "dtac.jpg";
+								}elseif ($rs_p['p_network'] == 'TRUE'){
+									$icon = "true.jpg";
+								}else{
+									$icon = "n/a";
+								}
+								// show image
+								echo "<img src=\"$icon\">";
+
+							}else{
+								echo "Unable to determine network icon. ";
+							}
+						// 	if($rs_p['p_network']=='AIS') { $icon="ais.jpg"; } 
+						// elseif($rs_p['p_network']=='DTAC') { $icon="dtac.jpg"; }
+						// elseif($rs_p['p_network']=='TRUE') { $icon="true.jpg"; }
+						// else { $icon=="n/a"; }
+						// echo "<img src=\"$icon\">";
 							?>
 						</td>
-						<td><?=$rs_p['p_gender']?></td>
+						<?php 
+							if(isset($rs_p) && is_array($rs_p) && isset($rs_p['p_gender'])){
+								echo "<td>{$rs_p['p_gender']}</td>"; 
+							}else{
+								echo "<td>Undefined</td>";
+							}
+						 ?>
+						
+						
 						<td><?=number_format($rs_p['p_price'])?></td>
 						<td>
 							

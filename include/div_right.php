@@ -1,3 +1,12 @@
+<?php include 'connect/connect.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
 <img src="images/yell_07.png" width="260" height="24" />
 
 <script language="JavaScript">
@@ -60,33 +69,47 @@
     <td>
 		<div id="text_white">
 			
-			<?
-				$tel_job = "select * 
-				           	  from   job_category
-						   	  where  1=1 order by cat_title ASC";
-				$get_job = mysql_query($tel_job);
-				while($rs_job = mysql_fetch_array($get_job))
-				{
+			<?php
+				
+				$tel_job = "SELECT * FROM job_category WHERE 1=1 ORDER BY cat_title ASC";
+				$get_job = mysqli_query($conn, $tel_job);
+				// check if query was success
+				if ($get_job === false){
+					die("Error in query: " . mysqli_error($conn));
+				}
+				while($rs_job = mysqli_fetch_assoc($get_job)){
+
+				
+				// $tel_job = "select * 
+				//            	  from   job_category
+				// 		   	  where  1=1 order by cat_title ASC";
+				// $get_job = mysql_query($tel_job);
+				// while($rs_job = mysql_fetch_array($get_job))
+				// {
 			?>
 				<fieldset style="padding:3px;">
 			
 				<a href="job_number.php?cat_id=<?=$rs_job['cat_id']?>">
-					<?
-					if($_GET['cat_id']==$rs_job['cat_id']){
+				<?php
+					if(isset($_GET['cat_id'])){
+						$catId = $_GET['cat_id'];
+					
+					// if($_GET['cat_id']==$rs_job['cat_id']){
 				?>
 				<font color="#FFCC33">
-				<?
+				<?php
 					}
 				?>
-					- <?=$rs_job['cat_title']?>
+					 <?=$rs_job['cat_title']?>
 					</font>
 					
 				</a>
 				
 				</fieldset>
 				<br/>
-			<?
+			<?php
 				}
+				mysqli_free_result($get_job);
 			?>
 		</div>
 	</td>
@@ -137,19 +160,26 @@
     <td>&nbsp;</td>
     <td>
 		<div id="text_white">
-				<?
-					$tel_text3 = "select * 
-				           		from   text3
-						   		where  1=1 order by text_id ASC";
-					$get_text3 = mysql_query($tel_text3);
-					while($rs_text3 = mysql_fetch_array($get_text3))
-					{
+				<?php
+					$tel_text3 = "SELECT * FROM text3 WHERE 1=1 ORDER BY text_id ASC";
+					$get_text3 = mysqli_query($conn, $tel_text3);
+					if ($get_text3 === false){
+						die("Error in query: " . mysqli_error($conn));
+					}
+					while($rs_text3 = mysqli_fetch_assoc($get_text3)){
+					// $tel_text3 = "select * 
+				    //        		from   text3
+					// 	   		where  1=1 order by text_id ASC";
+					// $get_text3 = mysql_query($tel_text3);
+					// while($rs_text3 = mysql_fetch_array($get_text3))
+					// {
 				?>
 						<a href="text_detail3.php?text_id=<?=$rs_text3['text_id']?>">
 							- <?=$rs_text3['text_title']?>
 						</a><br/>
-				<?
+				<?php
 					}
+					mysqli_free_result($get_text3);
 				?>
 				<div class="linkbox2">
 				<strong><a href="text_list3.php">อ่านกระทู้อื่นๆ...</a></strong>
@@ -172,19 +202,24 @@
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div id="text_white"><?
-					$tel_text4 = "select * 
-				           		from   text4
-						   		where  1=1 order by text_id ASC";
-					$get_text4 = mysql_query($tel_text4);
-					while($rs_text4 = mysql_fetch_array($get_text4))
+    <td><div id="text_white">
+		<?php
+					$tel_text4 = "SELECT * 
+				           		FROM   text4
+						   		WHERE  1=1 ORDER BY text_id ASC";
+					$get_text4 = mysqli_query($tel_text4);
+					if ($get_text4 === false){
+						die("Error in query: " . mysqli_error($conn));
+					}
+					while($rs_text4 = mysqli_fetch_assoc($get_text4))
 					{
 				?>
 						<a href="text_detail4.php?text_id=<?=$rs_text4['text_id']?>">
 							<?=$rs_text4['text_title']?>
 						</a> |
-				<?
+				<?php
 					}
+					mysqli_free_result($get_text4);
 				?></div></td>
   </tr>
   <tr>
@@ -203,3 +238,5 @@ Histats.track_hits();} catch(err){};
 	</td>
   </tr>
 </table>
+</body>
+</html>

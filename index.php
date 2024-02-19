@@ -1,4 +1,4 @@
-<?
+<?php
 	ob_start();
 	session_start();
 	require("connect/connect.php");
@@ -13,7 +13,7 @@
 
 		<!------------------------------------------------------------------------------------------------------------ -->
 		<!--start :: div_head -->
-			<? include "include/div_script.php"?>
+			<?php include "include/div_script.php"?>
 		<!--end :: div_head -->
 		<!------------------------------------------------------------------------------------------------------------ -->
 		
@@ -28,7 +28,7 @@
 	<div id="bg">
 	<!------------------------------------------------------------------------------------------------------------ -->
 	<!--start :: div_head -->
-		<? include "include/div_head.php"?>
+		<?php include "include/div_head.php"?>
 	<!--end :: div_head -->
 	<!------------------------------------------------------------------------------------------------------------ -->
 		
@@ -37,7 +37,7 @@
 
 		<!------------------------------------------------------------------------------------------------------------ -->
 		<!--start :: div_menu -->
-			<? include "include/div_menu.php"?>
+			<?php include "include/div_menu.php"?>
 		<!--end :: div_menu -->
 		<!------------------------------------------------------------------------------------------------------------ -->	
 	</div>
@@ -72,25 +72,43 @@
 				</div>
 			
 				<div class="big_box">
-					<?
-						$tel_p = "select * from   text1 where  1=1 order by text_id DESC limit 0,6";
-						$get_p = mysql_query($tel_p);
+					<?php
+					// connect database
+						$host="localhost";
+						$user_name="root";
+						$pass_word="";
+						$db="magic2021_db";
+
+						$conn =  mysqli_connect($host, $user_name, $pass_word, $db);
+
+						if (!$conn) {
+							die("เชื่อมต่อฐานข้อมูลไม่สำเร็จ: " . mysqli_connect_error());
+						}
+						$tel_p = "SELECT * FROM text1 WHERE 1=1 ORDER BY text_id DESC LIMIT 0,6";
+
+						// $tel_p = "select * from   text1 where  1=1 order by text_id DESC limit 0,6";
+						$get_p = mysqli_query($conn, $tel_p);
+						// check if query was success
+						if ($get_p === false){
+							die("Error in query: " . mysqli_error($conn));
+						}
+
 					
-						while($rs_p = mysql_fetch_array($get_p )){
+						while($rs_p = mysqli_fetch_assoc($get_p )){
 					?>
 						<div class="box">
 						
 							<div class="image_box">
 								<a href="text_detail1.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										if($rs_p['new_pic']!=""){
 									?>
 										<img src="pic_text/<?=$rs_p['real_pic']?>" border="0" width="85" height="85"/>
-									<?
+									<?php
 										} else {
 									?>
 										<img src="images/nopic.jpg" width="85" height="85"/>
-									<?
+									<?php
 										}
 									?>										
 								</a>	
@@ -107,7 +125,7 @@
 							
 								<div id="text_white">
 									<a href="text_detail1.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										$filter = strip_tags($rs_p['text_content']);
 										$topic=mb_substr($filter,0,250).".....";
  										echo $topic;
@@ -120,8 +138,9 @@
 						
 					</div>
 					
-					<?
+					<?php
 						}
+						mysqli_free_result($get_p);
 					?>
 			
 				<div style="clear:both;"></div>
@@ -145,25 +164,37 @@
 				</div>
 			
 				<div class="big_box">
-					<?
-						$tel_p = "select * from   text4 where  1=1 order by text_id DESC limit 0,6";
-						$get_p = mysql_query($tel_p);
+					<?php
+						include 'connect/connect.php';
+						$tel_p = "SELECT * FROM text4 WHERE 1=1 ORDER BY text_id DESC LIMIT 0,6";
+
+						// $tel_p = "select * from   text1 where  1=1 order by text_id DESC limit 0,6";
+						$get_p = mysqli_query($conn, $tel_p);
+						// check if query was success
+						if ($get_p === false){
+							die("Error in query: " . mysqli_error($conn));
+						}
+
 					
-						while($rs_p = mysql_fetch_array($get_p )){
+						while($rs_p = mysqli_fetch_assoc($get_p )){
+						// $tel_p = "select * from   text4 where  1=1 order by text_id DESC limit 0,6";
+						// $get_p = mysql_query($tel_p);
+					
+						// while($rs_p = mysql_fetch_array($get_p )){
 					?>
 						<div class="box">
 						
 							<div class="image_box">
 								<a href="text_detail4.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										if($rs_p['new_pic']!=""){
 									?>
 										<img src="pic_text4/<?=$rs_p['real_pic']?>" border="0" width="85" height="85"/>
-									<?
+									<?php
 										} else {
 									?>
 										<img src="images/nopic.jpg" width="85" height="85"/>
-									<?
+									<?php
 										}
 									?>												
 								</a>	
@@ -180,7 +211,7 @@
 							
 								<div id="text_white">
 									<a href="text_detail4.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										$filter = strip_tags($rs_p['text_content']);
 										$topic=mb_substr($filter,0,250).".....";
  										echo $topic;
@@ -193,8 +224,9 @@
 						
 					</div>
 					
-					<?
+					<?php
 						}
+						mysqli_free_result($get_p);
 					?>
 			
 				<div style="clear:both;"></div>
@@ -217,11 +249,22 @@
 				</div>
 			
 				<div class="big_box">
-					<?
-						$tel_p = "select * from text3 where  1=1 order by text_id DESC limit 0,6";
-						$get_p = mysql_query($tel_p);
+					<?php
+						include 'connect/connect.php';
+						$tel_p = "SELECT * FROM text3 WHERE 1=1 ORDER BY text_id DESC LIMIT 0,6";
+
+						// $tel_p = "select * from   text1 where  1=1 order by text_id DESC limit 0,6";
+						$get_p = mysqli_query($conn, $tel_p);
+						// check if query was success
+						if ($get_p === false){
+							die("Error in query: " . mysqli_error($conn));
+						}
+
+						while($rs_p = mysqli_fetch_assoc($get_p )){
+						// $tel_p = "select * from text3 where  1=1 order by text_id DESC limit 0,6";
+						// $get_p = mysql_query($tel_p);
 					
-						while($rs_p = mysql_fetch_array($get_p )){
+						// while($rs_p = mysql_fetch_array($get_p )){
 					?>
 						<div class="box">
 						
@@ -229,15 +272,15 @@
 								
 								
 								<a href="text_detail3.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										if($rs_p['new_pic']!=""){
 									?>
 										<img src="pic_text3/<?=$rs_p['real_pic']?>" border="0" width="85" height="85"/>
-									<?
+									<?php
 										} else {
 									?>
 										<img src="images/nopic.jpg" width="85" height="85"/>
-									<?
+									<?php
 										}
 									?>												
 								</a>		
@@ -254,7 +297,7 @@
 							
 								<div id="text_white">
 									<a href="text_detail3.php?text_id=<?=$rs_p['text_id']?>">
-									<?
+									<?php
 										$filter = strip_tags($rs_p['text_content']);
 										$topic=mb_substr($filter,0,250).".....";
  										echo $topic;
@@ -267,8 +310,9 @@
 						
 					</div>
 					
-					<?
+					<?php
 						}
+						mysqli_free_result($get_p);
 					?>
 			
 				<div style="clear:both;"></div>
@@ -297,17 +341,29 @@
     			<td width="17">&nbsp;</td>
     			<td width="471">
 					<div id="text_white2">
-						<?
-							$tel_text2 = "select * 
-				           				from   text2
-						   				where  1=1 order by text_id DESC limit 0,10";
-							$get_text2 = mysql_query($tel_text2);
-							while($rs_text2 = mysql_fetch_array($get_text2))
-							{
+						<?php
+							include 'connect/connect.php';
+							
+							$tel_text2 = "SELECT * FROM text2 WHERE 1=1 ORDER BY text_id DESC LIMIT 0,10";
+							$get_text2 = mysqli_query($conn, $tel_text2);
+							// check if query was success
+							if ($get_text2 === false){
+								die("Error in query: " . mysqli_error($conn));
+							}
+
+						
+							while($rs_text2 = mysqli_fetch_assoc($get_text2)){
+							// $tel_text2 = "select * 
+				           	// 			from   text2
+						   	// 			where  1=1 order by text_id DESC limit 0,10";
+							// $get_text2 = mysql_query($tel_text2);
+							// while($rs_text2 = mysql_fetch_array($get_text2))
+							// {
 						?>
 							<a href="text_detail2.php?text_id=<?=$rs_text2['text_id']?>">- <?=$rs_text2['text_title']?></a><br/>
-						<?
+						<?php
 							}
+							mysqli_free_result($get_text2);
 						?>
 					</div>
 				</td>
@@ -334,19 +390,23 @@
     			<td>&nbsp;</td>
     			<td>
 		<div id="text_white2">
-			<?
-				$tel_web = "select * 
-				           from   webboard
-						   where  1=1 order by webboard_id DESC limit 0,10";
-				$get_web  = mysql_query($tel_web);
-				while($rs_web = mysql_fetch_array($get_web))
+			<?php
+				
+				$tel_web = "SELECT * FROM webboard WHERE 1=1 ORDER BY webboard_id DESC LIMIT 0,10";
+				$get_web  = mysqli_query($conn,$tel_web);
+				// check if query was success
+				if ($get_web === false){
+					die("Error in query: " . mysqli_error($conn));
+				}
+				while($rs_web = mysqli_fetch_assoc($get_web))
 				{
 			?>
 				<a href="webboard_detail.php?webboard_id=<?=$rs_web['webboard_id']?>">
 					- <?=$rs_web['webboard_title']?>
 				</a><br/>
-			<?
+			<?php
 				}
+				mysqli_free_result($get_web);
 			?>
 		</div>
 	</td>
@@ -372,7 +432,7 @@
 		<div id="right">
 			<!------------------------------------------------------------------------------------------------------------ -->
 			<!--start :: div_menu -->
-				<? include "include/div_right.php"?>
+				<?php include "include/div_right.php"?>
 			<!--end :: div_right -->
 			<!------------------------------------------------------------------------------------------------------------ -->
 		</div>
@@ -387,7 +447,7 @@
 	<div id="ft">
 		<!------------------------------------------------------------------------------------------------------------ -->
 		<!--start :: div_foot -->
-			<? include "include/div_foot.php"?>
+			<?php include "include/div_foot.php"?>
 		<!--end :: div_foot -->
 		<!------------------------------------------------------------------------------------------------------------ -->
 	</div>

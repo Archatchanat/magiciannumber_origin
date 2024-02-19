@@ -112,7 +112,9 @@
 			
 			
 			
-			<?=$content ?>
+			<?php
+			$content = '';
+			echo $content; ?>
 				
 			</div>
 			

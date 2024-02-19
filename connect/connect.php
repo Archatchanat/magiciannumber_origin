@@ -1,12 +1,19 @@
-<?
-/*=============== µÔ´µèÍ°Ò¹¢éÍÁÙÅ =================*/
+<?php
+/*===============à¹€à¸Šà¸·à¹ˆà¸­à¸•à¹ˆà¸­à¸à¸²à¸™à¸‚à¹‰à¸­à¸¡à¸¹à¸¥=================*/
 $host="localhost";
-$user_name="magic2021_db";
-$pass_word="ETnipy8F";
+$user_name="root";
+$pass_word="";
 $db="magic2021_db";
 
-mysql_connect( $host,$user_name,$pass_word) or die ("µÔ´µèÍ¡Ñº°Ò¹¢éÍÁÙÅ Mysql äÁèä´é ");
-mysql_select_db($db) or die("àÅ×Í¡°Ò¹¢éÍÁÙÅäÁèä´é");
-mysql_query("SET NAMES UTF8");
- 
+$conn =  mysqli_connect($host, $user_name, $pass_word, $db);
+
+if (!$conn) {
+    die("à¹€à¸Šà¸·à¹ˆà¸­à¸¡à¸•à¹ˆà¸­à¸à¸²à¸™à¸‚à¹‰à¸­à¸¡à¸¹à¸¥à¹„à¸¡à¹ˆà¸ªà¸³à¹€à¸£à¹‡à¸ˆ: " . mysqli_connect_error());
+}
+
+// if (!$conn->set_charset("utf8")) {
+//     printf("Error setting character set to UTF-8: %s\n", $conn->error);
+// }
+
+
 ?> 
